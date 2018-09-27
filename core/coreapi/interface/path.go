@@ -108,7 +108,7 @@ type resolvedPath struct {
 // IpfsPath creates new /ipfs path from the provided CID
 func IpfsPath(c cid.Cid) ResolvedPath {
 	return &resolvedPath{
-		path:      path{ipfspath.Path("/ipfs/" + c.String())},
+		path:      path{ipfspath.Path("/kpfs/" + c.String())},
 		cid:       c,
 		root:      c,
 		remainder: "",
@@ -118,7 +118,7 @@ func IpfsPath(c cid.Cid) ResolvedPath {
 // IpldPath creates new /ipld path from the provided CID
 func IpldPath(c cid.Cid) ResolvedPath {
 	return &resolvedPath{
-		path:      path{ipfspath.Path("/ipld/" + c.String())},
+		path:      path{ipfspath.Path("/kpld/" + c.String())},
 		cid:       c,
 		root:      c,
 		remainder: "",
@@ -160,7 +160,7 @@ func (p *path) Namespace() string {
 
 func (p *path) Mutable() bool {
 	//TODO: MFS: check for /local
-	return p.Namespace() == "ipns"
+	return p.Namespace() == "kpns"
 }
 
 func (p *resolvedPath) Cid() cid.Cid {

@@ -5,12 +5,13 @@ import (
 	fmt "fmt"
 	gopath "path"
 
-	core "github.com/ipfs/go-ipfs/core"
-	coreiface "github.com/ipfs/go-ipfs/core/coreapi/interface"
-	namesys "github.com/ipfs/go-ipfs/namesys"
 	uio "gx/ipfs/QmPL8bYtbACcSFFiSr4s2du7Na382NxRADR8hC7D9FkEA2/go-unixfs/io"
 	ipfspath "gx/ipfs/QmX7uSbkNz76yNwBhuwYwRbhihLnJqM73VTCjS3UMJud9A/go-path"
 	resolver "gx/ipfs/QmX7uSbkNz76yNwBhuwYwRbhihLnJqM73VTCjS3UMJud9A/go-path/resolver"
+
+	core "github.com/ipfs/go-ipfs/core"
+	coreiface "github.com/ipfs/go-ipfs/core/coreapi/interface"
+	namesys "github.com/ipfs/go-ipfs/namesys"
 
 	cid "gx/ipfs/QmPSQnBKM9g7BaUcZCvswUJVscQ1ipjmwxN5PXCjkp9EQ7/go-cid"
 	ipld "gx/ipfs/QmdDXJs4axxefSPgK6Y1QhpJWKuDPnGJiqgq4uncb4rFHL/go-ipld-format"
@@ -57,9 +58,9 @@ func resolvePath(ctx context.Context, ng ipld.NodeGetter, nsys namesys.NameSyste
 	var resolveOnce resolver.ResolveOnce
 
 	switch ipath.Segments()[0] {
-	case "ipfs":
+	case "kpfs":
 		resolveOnce = uio.ResolveUnixfsOnce
-	case "ipld":
+	case "kpld":
 		resolveOnce = resolver.ResolveSingle
 	default:
 		return nil, fmt.Errorf("unsupported path namespace: %s", p.Namespace())
